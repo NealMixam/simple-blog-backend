@@ -40,7 +40,14 @@ const authRouter = require('./routes/auth.routes')
 const app = express()
 
 // Простая настройка CORS
-app.use(cors())
+app.use(cors({
+    origin: [
+        'http://localhost:3000', // для локальной разработки
+        'https://nealmixam.github.io' // URL твоего фронтенда на GitHub Pages
+    ],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true // если используешь куки/JWT в куки
+}))
 
 // Или более конкретная настройка:
 // app.use(cors({
